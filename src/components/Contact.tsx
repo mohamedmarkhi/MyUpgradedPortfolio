@@ -2,85 +2,116 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Send, Briefcase, Rocket } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 bg-black relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px]" />
+    <section id="contact" className="py-24 bg-background relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto bg-white/5 border border-white/10 rounded-[40px] overflow-hidden backdrop-blur-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="p-12 lg:p-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-              <h2 className="text-4xl font-bold mb-8">Let's build something extraordinary.</h2>
-              <p className="text-blue-100 mb-12 text-lg">
-                Ready to take your project to the next level? I'm currently available for freelance work and full-time opportunities.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">Let's build something extraordinary.</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Ready to take your project to the next level? I'm currently available for freelance work and part-time opportunities.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Part 1: Hire Me / General Availability */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-10 lg:p-12 rounded-[40px] bg-card border border-border hover:border-primary/50 transition-all group"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                  <Briefcase size={28} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">Hire Me</h3>
+                  <p className="text-muted-foreground">General inquiries & roles</p>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div className="flex items-center gap-5">
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary">
                     <Mail size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-blue-200">Email Me</p>
-                    <p className="font-semibold">mohamed.markhi@example.com</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Email Me</p>
+                    <a href="mailto:markhimohamed@outlook.fr" className="text-lg font-semibold hover:text-primary transition-colors">
+                      markhimohamed@outlook.fr
+                    </a>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+
+                <div className="flex items-center gap-5">
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary">
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-blue-200">Location</p>
-                    <p className="font-semibold">Casablanca, Morocco</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Location</p>
+                    <p className="text-lg font-semibold">Al Hoceima, Morocco</p>
                   </div>
                 </div>
               </div>
-            </div>
+
+              <div className="mt-12 p-6 rounded-3xl bg-primary/5 border border-primary/10">
+                <p className="text-sm leading-relaxed text-muted-foreground italic">
+                  "I'm always looking for exciting new challenges and teams where I can contribute my full-stack expertise."
+                </p>
+              </div>
+            </motion.div>
             
-            <div className="p-12 lg:p-16">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-400">Full Name</label>
-                    <input 
-                      type="text" 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-400">Email Address</label>
-                    <input 
-                      type="email" 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                      placeholder="john@example.com"
-                    />
-                  </div>
+            {/* Part 2: Build Something / Project Inquiry */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-10 lg:p-12 rounded-[40px] bg-primary text-primary-foreground shadow-2xl shadow-primary/20"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
+                  <Rocket size={28} />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-400">Subject</label>
+                <div>
+                  <h3 className="text-2xl font-bold">Build Something</h3>
+                  <p className="text-primary-foreground/70">Start a new project</p>
+                </div>
+              </div>
+
+              <form className="space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <input 
                     type="text" 
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                    placeholder="Project Inquiry"
+                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all"
+                    placeholder="Your Name"
+                  />
+                  <input 
+                    type="email" 
+                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all"
+                    placeholder="Your Email"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-400">Message</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-                <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all transform active:scale-[0.98]">
-                  Send Message <Send size={18} />
+                <input 
+                  type="text" 
+                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all"
+                  placeholder="Project Type (e.g. Web App, E-commerce)"
+                />
+                <textarea 
+                  rows={4}
+                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all resize-none"
+                  placeholder="Tell me about your vision..."
+                />
+                <button className="w-full bg-white text-primary font-bold py-5 rounded-2xl flex items-center justify-center gap-2 hover:bg-secondary transition-all transform active:scale-[0.98]">
+                  Send Project Inquiry <Send size={18} />
                 </button>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
