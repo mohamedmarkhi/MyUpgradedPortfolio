@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, Briefcase, Rocket } from 'lucide-react';
+import { Mail, MapPin, Send, Briefcase, Zap } from 'lucide-react';
 
 const Contact = () => {
   return (
     <section id="contact" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -24,7 +24,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-10 lg:p-12 rounded-[40px] bg-card border border-border hover:border-primary/50 transition-all group"
+              className="p-10 lg:p-12 rounded-[40px] bg-card border border-border hover:border-primary/50 transition-all group shadow-sm"
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
@@ -67,7 +67,7 @@ const Contact = () => {
               </div>
             </motion.div>
             
-            {/* Part 2: Build Something / Project Inquiry */}
+            {/* Part 2: Launch Your Vision / Project Inquiry */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -76,11 +76,11 @@ const Contact = () => {
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
-                  <Rocket size={28} />
+                  <Zap size={28} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">Build Something</h3>
-                  <p className="text-primary-foreground/70">Start a new project</p>
+                  <h3 className="text-2xl font-bold">Launch Your Vision</h3>
+                  <p className="text-primary-foreground/70">Start a custom project</p>
                 </div>
               </div>
 
@@ -88,26 +88,26 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <input 
                     type="text" 
-                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all"
+                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/70 focus:bg-white/20 outline-none transition-all"
                     placeholder="Your Name"
                   />
                   <input 
                     type="email" 
-                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all"
+                    className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/70 focus:bg-white/20 outline-none transition-all"
                     placeholder="Your Email"
                   />
                 </div>
                 <input 
                   type="text" 
-                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all"
+                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/70 focus:bg-white/20 outline-none transition-all"
                   placeholder="Project Type (e.g. Web App, E-commerce)"
                 />
                 <textarea 
                   rows={4}
-                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/50 focus:bg-white/20 outline-none transition-all resize-none"
+                  className="w-full bg-white/10 border border-white/20 rounded-2xl px-5 py-4 text-white placeholder:text-white/70 focus:bg-white/20 outline-none transition-all resize-none"
                   placeholder="Tell me about your vision..."
                 />
-                <button className="w-full bg-white text-primary font-bold py-5 rounded-2xl flex items-center justify-center gap-2 hover:bg-secondary transition-all transform active:scale-[0.98]">
+                <button className="w-full bg-white text-primary font-bold py-5 rounded-2xl flex items-center justify-center gap-2 hover:bg-white/90 transition-all transform active:scale-[0.98] shadow-lg">
                   Send Project Inquiry <Send size={18} />
                 </button>
               </form>
