@@ -17,42 +17,56 @@ interface Repo {
 }
 
 const ProjectCard = ({ repo }: { repo: Repo }) => (
-  <div className="flex-shrink-0 w-[280px] px-3 py-4">
-    <div className="group/card relative overflow-hidden rounded-[32px] bg-card border border-border h-[320px] flex flex-col transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-primary/20 hover:border-primary">
-      <div className="h-32 overflow-hidden bg-muted/50 flex items-center justify-center relative transition-colors group-hover/card:bg-primary/10">
-        <Github className="text-primary/10 w-16 h-16 absolute group-hover/card:text-primary/20" />
-        <div className="z-10 text-center p-4">
-          <span className="text-[9px] uppercase tracking-widest font-bold text-primary-foreground bg-primary px-2 py-0.5 rounded-full">
-            {repo.language || 'Code'}
+  <div className="flex-shrink-0 w-[300px] px-4 py-6">
+    <div className="group/card relative overflow-hidden rounded-[32px] bg-card border border-border h-[340px] flex flex-col transition-all duration-500 hover:border-primary hover:shadow-2xl hover:shadow-primary/10">
+      {/* Header Area */}
+      <div className="h-32 overflow-hidden bg-secondary/50 flex items-center justify-center relative transition-colors group-hover/card:bg-primary/5">
+        <Github className="text-primary/5 w-20 h-20 absolute group-hover/card:text-primary/10 transition-colors" />
+        <div className="z-10">
+          <span className="text-[10px] uppercase tracking-widest font-black text-primary-foreground bg-primary px-3 py-1 rounded-full shadow-sm">
+            {repo.language || 'Project'}
           </span>
         </div>
       </div>
       
-      <div className="p-5 flex-grow flex flex-col">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
-            <Star size={12} className="text-primary" /> {repo.stargazers_count}
+      {/* Content Area */}
+      <div className="p-6 flex-grow flex flex-col">
+        <div className="flex items-center gap-4 mb-3">
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-primary">
+            <Star size={14} fill="currentColor" /> {repo.stargazers_count}
           </div>
-          <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
-            <GitFork size={12} /> {repo.forks_count}
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground">
+            <GitFork size={14} /> {repo.forks_count}
           </div>
         </div>
 
-        <h3 className="text-base font-bold text-foreground mb-2 line-clamp-1 group-hover/card:text-primary transition-colors">
+        <h3 className="text-lg font-black text-foreground mb-2 line-clamp-1 group-hover/card:text-primary transition-colors">
           {repo.name.replace(/-/g, ' ')}
         </h3>
-        <p className="text-muted-foreground text-xs mb-4 leading-relaxed line-clamp-3">
-          {repo.description || "A sophisticated project exploring modern web architectures and scalable solutions."}
+        
+        {/* Fixed Contrast: Using foreground for better visibility */}
+        <p className="text-foreground/70 text-sm mb-4 leading-relaxed line-clamp-3 font-medium">
+          {repo.description || "A high-performance digital solution built with modern web standards and scalable architecture."}
         </p>
 
-        <div className="flex items-center gap-4 mt-auto pt-2 border-t border-border/50">
+        <div className="flex items-center gap-6 mt-auto pt-4 border-t border-border">
           {repo.homepage && (
-            <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-70 transition-opacity flex items-center gap-1.5 text-xs font-bold">
-              <ExternalLink size={14} /> Demo
+            <a 
+              href={repo.homepage} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:text-accent transition-colors flex items-center gap-2 text-xs font-black uppercase tracking-tight"
+            >
+              <ExternalLink size={16} /> Live Demo
             </a>
           )}
-          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-bold">
-            <Github size={14} /> Source
+          <a 
+            href={repo.html_url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-foreground/60 hover:text-primary transition-colors flex items-center gap-2 text-xs font-black uppercase tracking-tight"
+          >
+            <Github size={16} /> Source
           </a>
         </div>
       </div>
@@ -81,7 +95,6 @@ const Projects = () => {
     fetchRepos();
   }, []);
 
-  // Duplicate repos for seamless infinite loop
   const duplicatedRepos = [...repos, ...repos, ...repos];
 
   return (
@@ -93,22 +106,24 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4">Live Repositories</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Directly synced from my GitHub. Hover to pause and explore.
+          <div className="inline-block px-4 py-1.5 mb-4 text-xs font-black tracking-widest text-primary uppercase bg-primary/10 rounded-full">
+            Portfolio
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-foreground mb-4">Live Repositories</h2>
+          <p className="text-foreground/60 font-medium max-w-xl mx-auto">
+            Real-time projects fetched directly from GitHub.
           </p>
         </motion.div>
       </div>
 
       {loading ? (
         <div className="flex justify-center py-20">
-          <div className="w-10 h-10 border-3 border-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
       ) : (
-        <div className="relative flex overflow-hidden group">
-          {/* Gradient Overlays for smooth fade */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        <div className="relative flex overflow-hidden group py-4">
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
           <motion.div 
             className="flex whitespace-nowrap"
@@ -117,7 +132,7 @@ const Projects = () => {
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: repos.length * 3, // Adjust speed here
+                duration: repos.length * 4,
                 ease: "linear",
               },
             }}
