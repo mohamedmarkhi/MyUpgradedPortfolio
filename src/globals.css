@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    /* Light Mode: Olive and Cold Gray */
-    --background: 210 20% 98%; /* Cold Gray #f8f9fa */
-    --foreground: 205 18% 24%; /* Dark Gray #313e47 */
+    /* Light Mode: White and Olive Green */
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 205 18% 24%; /* Dark Gray */
 
     --card: 0 0% 100%;
     --card-foreground: 205 18% 24%;
@@ -14,24 +14,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 205 18% 24%;
 
-    --primary: 72 10% 40%; /* Muted Olive #6b705c */
-    --primary-foreground: 210 20% 98%;
+    --primary: 84 33% 40%; /* Rich Olive Green */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 16% 93%; /* Lighter Cold Gray */
-    --secondary-foreground: 72 10% 40%;
+    --secondary: 84 20% 95%; /* Very Light Olive */
+    --secondary-foreground: 84 33% 40%;
 
-    --muted: 210 16% 93%;
+    --muted: 210 16% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 84 33% 76%; /* #c6d8af */
+    --accent: 84 33% 76%; /* Soft Olive #c6d8af */
     --accent-foreground: 227 73% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 72 10% 40%;
+    --border: 84 10% 90%;
+    --input: 84 10% 90%;
+    --ring: 84 33% 40%;
 
     --radius: 1rem;
   }
