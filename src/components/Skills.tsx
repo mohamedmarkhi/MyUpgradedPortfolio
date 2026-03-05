@@ -4,8 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   Code2, Server, Database, Cloud, 
-  Wrench, Layout, Cpu, Globe, 
-  ShieldCheck, Zap
+  Wrench, Cpu, Zap, Layout
 } from 'lucide-react';
 
 const SkillCard = ({ title, icon: Icon, skills, delay }: { title: string, icon: any, skills: string[], delay: number }) => (
@@ -49,7 +48,7 @@ const Skills = () => {
     {
       title: "Frontend Architecture",
       icon: Layout,
-      skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      skills: ["React.js", "Next.js", "JavaScript", "Tailwind CSS"],
       delay: 0.1
     },
     {
@@ -61,19 +60,19 @@ const Skills = () => {
     {
       title: "Data Management",
       icon: Database,
-      skills: ["MongoDB", "MySQL", "PostgreSQL", "Redis", "Prisma"],
+      skills: ["MongoDB", "MySQL"],
       delay: 0.3
     },
     {
-      title: "Cloud & DevOps",
+      title: "Cloud & Infrastructure",
       icon: Cloud,
-      skills: ["AWS", "Docker", "CI/CD", "Vercel", "Nginx"],
+      skills: ["AWS", "Docker", "CI/CD", "Vercel"],
       delay: 0.4
     },
     {
       title: "Core Engineering",
       icon: Cpu,
-      skills: ["Data Structures", "Algorithms", "System Design", "OOP"],
+      skills: ["Merise", "StarUML"],
       delay: 0.5
     },
     {
