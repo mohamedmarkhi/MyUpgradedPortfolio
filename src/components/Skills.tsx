@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Server, Layout, Database, Wrench, Cloud } from 'lucide-react';
+import { Server, Layout, Database, Wrench, Cloud, Github, GitBranch } from 'lucide-react';
 
 const SkillCategory = ({ title, icon, skills, delay }: { title: string, icon: React.ReactNode, skills: string[], delay: number }) => (
   <motion.div
@@ -10,15 +10,15 @@ const SkillCategory = ({ title, icon, skills, delay }: { title: string, icon: Re
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay }}
-    className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all group"
+    className="p-6 rounded-2xl bg-white/5 dark:bg-white/5 border border-zinc-200 dark:border-white/10 hover:border-blue-500/50 transition-all group"
   >
     <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4 group-hover:scale-110 transition-transform">
       {icon}
     </div>
-    <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
+    <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4">{title}</h3>
     <div className="flex flex-wrap gap-2">
       {skills.map((skill) => (
-        <span key={skill} className="px-3 py-1 text-xs font-medium bg-white/5 text-gray-400 rounded-md border border-white/5">
+        <span key={skill} className="px-3 py-1 text-xs font-medium bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-gray-400 rounded-md border border-zinc-200 dark:border-white/5">
           {skill}
         </span>
       ))}
@@ -55,17 +55,17 @@ const Skills = () => {
     {
       title: "Tools & Workflow",
       icon: <Wrench size={24} />,
-      skills: ["Postman", "Jira", "Git", "Agile"],
+      skills: ["Git", "GitHub", "Postman", "Jira", "Agile"],
       delay: 0.5
     }
   ];
 
   return (
-    <section id="skills" className="py-24 bg-black">
+    <section id="skills" className="py-24 bg-white dark:bg-black transition-colors">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Technical Arsenal</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-4">Technical Arsenal</h2>
+          <p className="text-zinc-500 dark:text-gray-400 max-w-2xl mx-auto">
             A comprehensive suite of modern technologies I use to build scalable, secure, and beautiful applications.
           </p>
         </div>

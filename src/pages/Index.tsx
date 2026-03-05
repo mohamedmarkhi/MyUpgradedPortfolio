@@ -6,11 +6,13 @@ import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
+import ThemeToggle from '@/components/ThemeToggle';
 import { MadeWithDyad } from "@/components/made-with-dyad";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-blue-500/30 selection:text-blue-200">
+    <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white selection:bg-blue-500/30 selection:text-blue-600 dark:selection:text-blue-200 transition-colors">
+      <ThemeToggle />
       <Navbar />
       <main>
         <Hero />
@@ -18,9 +20,9 @@ const Index = () => {
         <Projects />
         <Contact />
       </main>
-      <footer className="py-12 border-t border-white/5 text-center">
+      <footer className="py-12 border-t border-zinc-200 dark:border-white/5 text-center">
         <div className="container mx-auto px-6">
-          <p className="text-gray-500 text-sm mb-4">
+          <p className="text-zinc-500 dark:text-gray-500 text-sm mb-4">
             © {new Date().getFullYear()} Mohamed MARKHI. All rights reserved.
           </p>
           <div className="flex justify-center gap-6 mb-8">
@@ -28,7 +30,7 @@ const Index = () => {
               href="https://github.com/mohamedmarkhi" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
             >
               Github
             </a>
@@ -36,7 +38,7 @@ const Index = () => {
               href="https://www.linkedin.com/in/markhimohamed/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
             >
               LinkedIn
             </a>
