@@ -7,22 +7,24 @@ import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import ThemeToggle from '@/components/ThemeToggle';
+import SpaceBackground from '@/components/SpaceBackground';
 import { MadeWithDyad } from "@/components/made-with-dyad";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white selection:bg-blue-500/30 selection:text-blue-600 dark:selection:text-blue-200 transition-colors">
+    <div className="min-h-screen bg-background text-foreground selection:bg-[#c6d8af]/30 selection:text-[#c6d8af] transition-colors duration-500">
+      <SpaceBackground />
       <ThemeToggle />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Skills />
         <Projects />
         <Contact />
       </main>
-      <footer className="py-12 border-t border-zinc-200 dark:border-white/5 text-center">
+      <footer className="relative z-10 py-12 border-t border-border text-center bg-background/50 backdrop-blur-sm">
         <div className="container mx-auto px-6">
-          <p className="text-zinc-500 dark:text-gray-500 text-sm mb-4">
+          <p className="text-muted-foreground text-sm mb-4">
             © {new Date().getFullYear()} Mohamed MARKHI. All rights reserved.
           </p>
           <div className="flex justify-center gap-6 mb-8">
@@ -30,7 +32,7 @@ const Index = () => {
               href="https://github.com/mohamedmarkhi" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+              className="text-muted-foreground hover:text-accent transition-colors"
             >
               Github
             </a>
@@ -38,7 +40,7 @@ const Index = () => {
               href="https://www.linkedin.com/in/markhimohamed/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+              className="text-muted-foreground hover:text-accent transition-colors"
             >
               LinkedIn
             </a>
