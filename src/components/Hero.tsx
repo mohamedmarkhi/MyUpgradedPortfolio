@@ -41,10 +41,20 @@ const Hero = () => {
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
             </button>
             <div className="flex items-center gap-4 px-4">
-              <a href="#" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+              <a 
+                href="https://github.com/mohamedmarkhi" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+              >
                 <Github size={24} />
               </a>
-              <a href="#" className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+              <a 
+                href="https://www.linkedin.com/in/markhimohamed/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+              >
                 <Linkedin size={24} />
               </a>
             </div>

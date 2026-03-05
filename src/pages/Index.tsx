@@ -24,9 +24,22 @@ const Index = () => {
             © {new Date().getFullYear()} Mohamed MARKHI. All rights reserved.
           </p>
           <div className="flex justify-center gap-6 mb-8">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Github</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
+            <a 
+              href="https://github.com/mohamedmarkhi" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              Github
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/markhimohamed/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              LinkedIn
+            </a>
           </div>
           <MadeWithDyad />
         </div>

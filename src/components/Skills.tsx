@@ -31,7 +31,7 @@ const Skills = () => {
     {
       title: "Frontend Mastery",
       icon: <Layout size={24} />,
-      skills: ["React.js", "Next.js", "Tailwind CSS", "Bootstrap", "Figma"],
+      skills: ["React.js", "Tailwind CSS", "Bootstrap", "Figma"],
       delay: 0.1
     },
     {
@@ -43,13 +43,13 @@ const Skills = () => {
     {
       title: "Database & Modeling",
       icon: <Database size={24} />,
-      skills: ["MongoDB", "MySQL", "PostgreSQL", "Merise"],
+      skills: ["MongoDB", "MySQL", "Merise"],
       delay: 0.3
     },
     {
       title: "DevOps & Cloud",
       icon: <Cloud size={24} />,
-      skills: ["AWS", "Docker", "CI/CD", "Nginx"],
+      skills: ["AWS", "Docker", "CI/CD"],
       delay: 0.4
     },
     {
