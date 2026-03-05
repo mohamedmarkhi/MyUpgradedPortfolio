@@ -3,8 +3,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, Briefcase, Zap, MessageSquare } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { toast } from 'sonner';
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  projectType: z.string().min(3, "Please specify the project type"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    console.log("Form Data:", data);
+    toast.success("Inquiry sent successfully! I'll get back to you soon.");
+    reset();
+  };
+
   return (
     <section id="contact" className="py-24 bg-background relative overflow-hidden">
       {/* Ambient Background Glow */}
@@ -100,35 +130,51 @@ const Contact = () => {
                 </div>
               </div>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <input 
+                      {...register("name")}
                       type="text" 
-                      className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all font-medium"
+                      className={`w-full bg-secondary/50 border ${errors.name ? 'border-destructive' : 'border-border'} rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all font-medium`}
                       placeholder="Your Name"
                     />
+                    {errors.name && <p className="text-[10px] font-bold text-destructive uppercase tracking-wider px-2">{errors.name.message}</p>}
                   </div>
                   <div className="space-y-2">
                     <input 
+                      {...register("email")}
                       type="email" 
-                      className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all font-medium"
+                      className={`w-full bg-secondary/50 border ${errors.email ? 'border-destructive' : 'border-border'} rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all font-medium`}
                       placeholder="Your Email"
                     />
+                    {errors.email && <p className="text-[10px] font-bold text-destructive uppercase tracking-wider px-2">{errors.email.message}</p>}
                   </div>
                 </div>
-                <input 
-                  type="text" 
-                  className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all font-medium"
-                  placeholder="Project Type (e.g. Web App, E-commerce)"
-                />
-                <textarea 
-                  rows={3}
-                  className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all resize-none font-medium"
-                  placeholder="Tell me about your vision..."
-                />
-                <button className="w-full bg-primary text-primary-foreground font-black py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-primary/90 transition-all transform active:scale-[0.98] shadow-xl shadow-primary/20 uppercase tracking-widest text-xs">
-                  Send Project Inquiry <Send size={18} />
+                <div className="space-y-2">
+                  <input 
+                    {...register("projectType")}
+                    type="text" 
+                    className={`w-full bg-secondary/50 border ${errors.projectType ? 'border-destructive' : 'border-border'} rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all font-medium`}
+                    placeholder="Project Type (e.g. Web App, E-commerce)"
+                  />
+                  {errors.projectType && <p className="text-[10px] font-bold text-destructive uppercase tracking-wider px-2">{errors.projectType.message}</p>}
+                </div>
+                <div className="space-y-2">
+                  <textarea 
+                    {...register("message")}
+                    rows={3}
+                    className={`w-full bg-secondary/50 border ${errors.message ? 'border-destructive' : 'border-border'} rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:bg-background outline-none transition-all resize-none font-medium`}
+                    placeholder="Tell me about your vision..."
+                  />
+                  {errors.message && <p className="text-[10px] font-bold text-destructive uppercase tracking-wider px-2">{errors.message.message}</p>}
+                </div>
+                <button 
+                  disabled={isSubmitting}
+                  type="submit"
+                  className="w-full bg-primary text-primary-foreground font-black py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-primary/90 transition-all transform active:scale-[0.98] shadow-xl shadow-primary/20 uppercase tracking-widest text-xs disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Send Project Inquiry"} <Send size={18} />
                 </button>
               </form>
             </motion.div>
