@@ -70,7 +70,7 @@ const Skills = () => {
       delay: 0.4
     },
     {
-      title: "Core Engineering",
+      title: "System Analysis & Design",
       icon: Cpu,
       skills: ["Merise", "StarUML"],
       delay: 0.5
