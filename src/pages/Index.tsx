@@ -1,17 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+"use client";
 
+import React from 'react';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Skills from '@/components/Skills';
+import Projects from '@/components/Projects';
+import Contact from '@/components/Contact';
 import { MadeWithDyad } from "@/components/made-with-dyad";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">
-          Start building your amazing project here!
-        </p>
-      </div>
-      <MadeWithDyad />
+    <div className="min-h-screen bg-black text-white selection:bg-blue-500/30 selection:text-blue-200">
+      <Navbar />
+      <main>
+        <Hero />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+      <footer className="py-12 border-t border-white/5 text-center">
+        <div className="container mx-auto px-6">
+          <p className="text-gray-500 text-sm mb-4">
+            © {new Date().getFullYear()} Mohamed MARKHI. All rights reserved.
+          </p>
+          <div className="flex justify-center gap-6 mb-8">
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">Github</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
+          </div>
+          <MadeWithDyad />
+        </div>
+      </footer>
     </div>
   );
 };
