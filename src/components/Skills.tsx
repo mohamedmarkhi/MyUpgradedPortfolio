@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Server, Layout, Database, Tool, Cloud, ShieldCheck } from 'lucide-react';
+import { Server, Layout, Database, Wrench, Cloud } from 'lucide-react';
 
 const SkillCategory = ({ title, icon, skills, delay }: { title: string, icon: React.ReactNode, skills: string[], delay: number }) => (
   <motion.div
@@ -54,7 +54,7 @@ const Skills = () => {
     },
     {
       title: "Tools & Workflow",
-      icon: <Tool size={24} />,
+      icon: <Wrench size={24} />,
       skills: ["Postman", "Jira", "Git", "Agile"],
       delay: 0.5
     }
