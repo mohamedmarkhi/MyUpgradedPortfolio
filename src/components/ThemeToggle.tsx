@@ -10,11 +10,11 @@ const ThemeToggle = () => {
   const y = useMotionValue(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const springY = useSpring(y, { stiffness: 300, damping: 30 });
-  const cordHeight = useTransform(springY, [0, 150], [60, 210]);
+  const springY = useSpring(y, { stiffness: 400, damping: 25 });
+  const cordHeight = useTransform(springY, [0, 60], [40, 100]);
 
   const handleDragEnd = () => {
-    if (y.get() > 100) {
+    if (y.get() > 40) {
       setTheme(theme === 'dark' ? 'light' : 'dark');
     }
     y.set(0);
@@ -31,8 +31,8 @@ const ThemeToggle = () => {
       {/* The Toggle Handle */}
       <motion.div
         drag="y"
-        dragConstraints={{ top: 0, bottom: 150 }}
-        dragElastic={0.2}
+        dragConstraints={{ top: 0, bottom: 60 }}
+        dragElastic={0.1}
         style={{ y }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -55,9 +55,9 @@ const ThemeToggle = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 40 }}
                 exit={{ opacity: 0, x: 20 }}
-                className="absolute top-3 left-full whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-primary bg-background px-2 py-1 rounded border border-primary/20 shadow-sm"
+                className="absolute top-3 left-full whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-primary bg-background px-2 py-1 rounded border border-primary/20 shadow-sm"
               >
-                Pull to Switch
+                Pull
               </motion.div>
             )}
           </AnimatePresence>
