@@ -3,6 +3,7 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
@@ -18,6 +19,7 @@ const Index = () => {
       <Navbar />
       <main className="relative z-10">
         <Hero />
+        <About />
         <Skills />
         <Projects />
         <Contact />
@@ -32,7 +34,7 @@ const Index = () => {
               href="https://github.com/mohamedmarkhi" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-muted-foreground hover:text-accent transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               Github
             </a>
@@ -40,7 +42,7 @@ const Index = () => {
               href="https://www.linkedin.com/in/markhimohamed/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-muted-foreground hover:text-accent transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               LinkedIn
             </a>
