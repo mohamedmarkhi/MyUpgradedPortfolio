@@ -13,13 +13,13 @@ const SkillCard = ({ title, icon: Icon, skills, delay }: { title: string, icon: 
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay }}
-    className="group relative p-8 rounded-[32px] bg-card border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden"
+    className="group relative p-6 md:p-8 rounded-[24px] md:rounded-[32px] bg-card border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden"
   >
     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-primary/10 transition-colors" />
     
-    <div className="flex items-start justify-between mb-6">
-      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-        <Icon size={28} />
+    <div className="flex items-start justify-between mb-4 md:mb-6">
+      <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+        <Icon size={24} />
       </div>
       <div className="flex gap-1">
         {[1, 2, 3].map((i) => (
@@ -28,13 +28,13 @@ const SkillCard = ({ title, icon: Icon, skills, delay }: { title: string, icon: 
       </div>
     </div>
 
-    <h3 className="text-xl font-black mb-4 text-foreground group-hover:text-primary transition-colors">{title}</h3>
+    <h3 className="text-lg md:text-xl font-black mb-4 text-foreground group-hover:text-primary transition-colors">{title}</h3>
     
     <div className="flex flex-wrap gap-2">
       {skills.map((skill) => (
         <span 
           key={skill} 
-          className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider bg-secondary text-primary rounded-xl border border-primary/10 group-hover:border-primary/30 transition-all"
+          className="px-2.5 py-1 text-[10px] md:text-[11px] font-bold uppercase tracking-wider bg-secondary text-primary rounded-lg md:rounded-xl border border-primary/10 group-hover:border-primary/30 transition-all"
         >
           {skill}
         </span>
@@ -84,27 +84,27 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-32 relative overflow-hidden bg-background">
+    <section id="skills" className="py-16 md:py-32 relative overflow-hidden bg-background">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-20">
+        <div className="max-w-4xl mx-auto text-center mb-12 md:mb-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black uppercase tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs font-black uppercase tracking-widest mb-6"
           >
             <Zap size={14} />
             <span>Technical Arsenal</span>
           </motion.div>
-          <h2 className="text-4xl md:text-7xl font-black text-foreground mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-7xl font-black text-foreground mb-6 tracking-tight">
             Powering <span className="text-primary">Innovation</span> with Modern Tech.
           </h2>
-          <p className="text-xl text-muted-foreground font-medium">
+          <p className="text-base md:text-xl text-muted-foreground font-medium">
             A curated selection of technologies I've mastered to build world-class digital products.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {categories.map((cat) => (
             <SkillCard key={cat.title} {...cat} />
           ))}

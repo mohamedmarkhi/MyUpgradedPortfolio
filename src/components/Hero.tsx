@@ -6,10 +6,10 @@ import { Github, Linkedin, ArrowRight, FileDown } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
       {/* Background Glows */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/20 rounded-full blur-[120px]" />
+      <div className="absolute top-1/4 -left-20 w-64 md:w-96 h-64 md:h-96 bg-primary/20 rounded-full blur-[80px] md:blur-[120px]" />
+      <div className="absolute bottom-1/4 -right-20 w-64 md:w-96 h-64 md:h-96 bg-accent/20 rounded-full blur-[80px] md:blur-[120px]" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -18,13 +18,13 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-xs font-black tracking-widest text-primary uppercase bg-primary/10 border border-primary/20 rounded-full">
+            <span className="inline-block px-4 py-1.5 mb-6 text-[10px] md:text-xs font-black tracking-widest text-primary uppercase bg-primary/10 border border-primary/20 rounded-full">
               Full Stack Engineer
             </span>
-            <h1 className="text-5xl md:text-8xl font-black text-foreground mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black text-foreground mb-6 tracking-tight leading-[1.1]">
               Mohamed <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">MARKHI</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto font-medium">
+            <p className="text-base md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto font-medium px-4">
               Architecting high-performance digital ecosystems with the MERN stack, Laravel, and AWS. 
               Turning complex logic into elegant, user-centric experiences.
             </p>
@@ -34,17 +34,17 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 px-4"
           >
-            <a href="#projects" className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-black uppercase tracking-widest text-xs flex items-center gap-2 hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+            <a href="#projects" className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
               View Projects
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </a>
-            <a href="/resume.pdf" download className="group bg-secondary text-primary px-8 py-4 rounded-full font-black uppercase tracking-widest text-xs flex items-center gap-2 hover:bg-primary/10 transition-all border border-primary/20">
+            <a href="/resume.pdf" download className="group bg-secondary text-primary px-8 py-4 rounded-full font-black uppercase tracking-widest text-[10px] md:text-xs flex items-center justify-center gap-2 hover:bg-primary/10 transition-all border border-primary/20">
               Download CV
               <FileDown className="group-hover:translate-y-0.5 transition-transform" size={18} />
             </a>
-            <div className="flex items-center gap-3 px-2">
+            <div className="flex items-center justify-center gap-3 mt-2 sm:mt-0">
               <a 
                 href="https://github.com/mohamedmarkhi" 
                 target="_blank" 

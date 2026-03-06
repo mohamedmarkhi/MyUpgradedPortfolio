@@ -27,7 +27,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-16 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -35,20 +35,20 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c6d8af]/10 border border-[#c6d8af]/20 text-[#0a1741] dark:text-[#c6d8af] text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c6d8af]/10 border border-[#c6d8af]/20 text-[#0a1741] dark:text-[#c6d8af] text-[10px] md:text-sm font-medium mb-6">
               <Sparkles size={16} />
               <span>The Journey</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-[#0a1741] dark:text-[#c6d8af]">Crafting Digital Excellence</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-6xl font-bold mb-6 md:mb-8 text-[#0a1741] dark:text-[#c6d8af]">Crafting Digital Excellence</h2>
+            <p className="text-base md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               Based in Casablanca, I transform complex ideas into seamless digital experiences. 
               My approach combines technical rigor with a relentless focus on user-centric design.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {items.map((item, index) => (
               <motion.div
                 key={index}
@@ -57,20 +57,20 @@ const About = () => {
                 whileHover={{ y: -10 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group p-10 rounded-[40px] bg-card border border-border hover:border-[#c6d8af] transition-all relative overflow-hidden`}
+                className={`group p-8 md:p-10 rounded-[32px] md:rounded-[40px] bg-card border border-border hover:border-[#c6d8af] transition-all relative overflow-hidden`}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#c6d8af]/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-[#c6d8af]/20 transition-colors" />
                 
-                <div className="mb-8 w-16 h-16 rounded-2xl bg-[#c6d8af]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="mb-6 md:mb-8 w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#c6d8af]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-[#0a1741] dark:text-[#c6d8af]">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-[#0a1741] dark:text-[#c6d8af]">{item.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                   {item.desc}
                 </p>
                 
-                <div className="mt-8 h-1 w-12 bg-[#c6d8af] rounded-full group-hover:w-full transition-all duration-500" />
+                <div className="mt-6 md:mt-8 h-1 w-12 bg-[#c6d8af] rounded-full group-hover:w-full transition-all duration-500" />
               </motion.div>
             ))}
           </div>
