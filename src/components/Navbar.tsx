@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, User, Briefcase, Mail, FileDown, Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Code2, User, Briefcase, Mail, FileDown, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
 const Navbar = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-black text-sm">
             M
           </div>
-          <span className="font-black text-foreground hidden xs:block tracking-tighter">MARKHI</span>
+          <span className="font-black text-foreground tracking-tighter">MARKHI</span>
         </div>
 
         {/* Desktop Navigation */}
@@ -57,7 +57,7 @@ const Navbar = () => {
           
           <a 
             href="#contact"
-            className="hidden xs:block bg-primary text-primary-foreground px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
+            className="hidden sm:block bg-primary text-primary-foreground px-4 md:px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
           >
             Hire Me
           </a>

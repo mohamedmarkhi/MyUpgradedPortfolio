@@ -17,7 +17,7 @@ interface Repo {
 }
 
 const ProjectCard = ({ repo }: { repo: Repo }) => (
-  <div className="flex-shrink-0 w-[300px] px-4 py-6">
+  <div className="flex-shrink-0 w-[280px] sm:w-[300px] px-3 sm:px-4 py-6">
     <div className="group/card relative overflow-hidden rounded-[32px] bg-card border border-border h-[340px] flex flex-col transition-all duration-500 hover:border-primary hover:shadow-2xl hover:shadow-primary/10">
       {/* Header Area */}
       <div className="h-32 overflow-hidden bg-secondary/50 flex items-center justify-center relative transition-colors group-hover/card:bg-primary/5">
@@ -44,7 +44,6 @@ const ProjectCard = ({ repo }: { repo: Repo }) => (
           {repo.name.replace(/-/g, ' ')}
         </h3>
         
-        {/* Fixed Contrast: Using foreground for better visibility */}
         <p className="text-foreground/70 text-sm mb-4 leading-relaxed line-clamp-3 font-medium">
           {repo.description || "A high-performance digital solution built with modern web standards and scalable architecture."}
         </p>
@@ -98,7 +97,7 @@ const Projects = () => {
   const duplicatedRepos = [...repos, ...repos, ...repos];
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-background">
+    <section id="projects" className="py-16 md:py-24 relative overflow-hidden bg-background">
       <div className="container mx-auto px-6 mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -109,7 +108,7 @@ const Projects = () => {
           <div className="inline-block px-4 py-1.5 mb-4 text-xs font-black tracking-widest text-primary uppercase bg-primary/10 rounded-full">
             Portfolio
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-foreground mb-4">Live Repositories</h2>
+          <h2 className="text-3xl md:text-6xl font-black text-foreground mb-4">Live Repositories</h2>
           <p className="text-foreground/60 font-medium max-w-xl mx-auto">
             Real-time projects fetched directly from GitHub.
           </p>
@@ -122,8 +121,8 @@ const Projects = () => {
         </div>
       ) : (
         <div className="relative flex overflow-hidden group py-4">
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
           <motion.div 
             className="flex whitespace-nowrap"
