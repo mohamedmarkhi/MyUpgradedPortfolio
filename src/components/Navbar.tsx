@@ -62,28 +62,28 @@ const Navbar = () => {
             Hire Me
           </a>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle - Styled as a Button */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <button className="md:hidden p-2 text-foreground hover:text-primary transition-colors">
-                <Menu size={24} />
+              <button className="md:hidden p-2.5 bg-primary/10 border border-primary/20 rounded-full text-primary hover:bg-primary hover:text-primary-foreground transition-all">
+                <Menu size={20} />
               </button>
             </SheetTrigger>
             <SheetContent side="top" className="w-full h-auto rounded-b-[32px] border-primary/20 bg-background/95 backdrop-blur-xl pt-12 pb-8">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
                 {navItems.map((item) => (
                   <a 
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-primary/10 text-foreground font-black uppercase tracking-widest text-sm transition-all"
+                    className="flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-primary/10 text-foreground font-black uppercase tracking-widest text-sm transition-all border-b border-border/50 last:border-0"
                   >
                     <span className="text-primary">{item.icon}</span>
                     {item.name}
                   </a>
                 ))}
-                <div className="h-px bg-border my-2 mx-6" />
+                <div className="h-px bg-border my-4 mx-6" />
                 <div className="flex flex-col gap-3 px-6">
                   <a 
                     href="/resume.pdf" 
