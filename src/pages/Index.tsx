@@ -9,7 +9,7 @@ import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import ThemeToggle from '@/components/ThemeToggle';
 import SpaceBackground from '@/components/SpaceBackground';
-import { MadeWithDyad } from "@/components/made-with-dyad";
+// import { MadeWithDyad } from "@/components/made-with-dyad";
 
 const Index = () => {
   return (
@@ -47,7 +47,7 @@ const Index = () => {
               LinkedIn
             </a>
           </div>
-          <MadeWithDyad />
+          {/* <MadeWithDyad /> */}
         </div>
       </footer>
     </div>
