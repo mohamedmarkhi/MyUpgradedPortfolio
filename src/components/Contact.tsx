@@ -29,8 +29,17 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Form Data:", data);
+    const response = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send");
+    }
     toast.success("Inquiry sent successfully! I'll get back to you soon.");
     reset();
   };
