@@ -9,10 +9,10 @@ import * as z from 'zod';
 import { toast } from 'sonner';
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  projectType: z.string().min(3, "Please specify the project type"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().min(2, "Name must be at least 2 characters").transform(str => str.trim()),
+  email: z.string().email("Please enter a valid email address").transform(str => str.trim()),
+  projectType: z.string().min(3, "Please specify the project type").transform(str => str.trim()),
+  message: z.string().min(10, "Message must be at least 10 characters").transform(str => str.trim()),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -28,8 +28,7 @@ const Contact = () => {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulate API call
-    try {
+  try {
     const response = await fetch("http://localhost:5000/api/contact", {
       method: "POST",
       headers: {
@@ -41,9 +40,12 @@ const Contact = () => {
     if (!response.ok) {
       throw new Error("Failed to send");
     }
+
     toast.success("Inquiry sent successfully! I'll get back to you soon.");
     reset();
+
   } catch (error) {
+    console.error(error);
     toast.error("Failed to send inquiry. Please try again.");
   }
 };
