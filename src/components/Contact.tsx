@@ -29,6 +29,7 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     // Simulate API call
+    try {
     const response = await fetch("http://localhost:5000/api/contact", {
       method: "POST",
       headers: {
@@ -42,7 +43,10 @@ const Contact = () => {
     }
     toast.success("Inquiry sent successfully! I'll get back to you soon.");
     reset();
-  };
+  } catch (error) {
+    toast.error("Failed to send inquiry. Please try again.");
+  }
+};
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-background relative overflow-hidden">
