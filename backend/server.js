@@ -29,7 +29,7 @@ app.use(mongoSanitize()); // Remove $ and . from inputs to prevent Mongo injecti
 app.use(xss());           // Clean HTML, JS, CSS from input
 
 app.use(cors({
-    origin: "https://mohamedmarkhi.dev", // just allow requests from our frontend 
+    // origin: "https://mohamedmarkhi.dev", // just allow requests from our frontend 
 }));
 app.use(express.json());
 
