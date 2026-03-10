@@ -1,36 +1,41 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
-// Connect to MongoDB
-const MONGO_URI = process.env.MONGO_URI!;
-if (!MONGO_URI) throw new Error("Please define MONGO_URI in .env");
+const MONGODB_URI = "mongodb://127.0.0.1:27017/portfolioDB";
 
-const contactSchema = new mongoose.Schema({
+if (!mongoose.connection.readyState) {
+  mongoose.connect(MONGODB_URI);
+}
+
+const ContactSchema = new mongoose.Schema({
   name: String,
   email: String,
   projectType: String,
   message: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-// Avoid "OverwriteModelError" when redeploying on Vercel
-const Contact = mongoose.models.Contact || mongoose.model("Contact", contactSchema);
+const Contact =
+  mongoose.models.Contact || mongoose.model("Contact", ContactSchema);
 
-// Ensure single mongoose connection
-if (!mongoose.connection.readyState) {
-  mongoose.connect(MONGO_URI);
-}
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const data = await req.json();
-    const contact = new Contact(data);
-    await contact.save();
+    const body = await req.json();
+    console.log("Form data:", body);
 
-    return NextResponse.json({ success: true, message: "Message received" });
+    const newContact = new Contact(body);
+    await newContact.save();
+
+    return NextResponse.json({ message: "Saved successfully" });
+
   } catch (error) {
-    console.error(error);
+    console.error("API ERROR:", error);
+
     return NextResponse.json(
-      { success: false, message: "Server error" },
+      { error: "Failed to save contact" },
       { status: 500 }
     );
   }
