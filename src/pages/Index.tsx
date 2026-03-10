@@ -9,7 +9,7 @@ import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import ThemeToggle from '@/components/ThemeToggle';
 import SpaceBackground from '@/components/SpaceBackground';
-import { MadeWithMohamedMarkhi} from '@/components/made-with-medmarkhi';
+// import { MadeWithMohamedMarkhi} from '@/components/made-with-medmarkhi';
 
 const Index = () => {
   return (
@@ -47,7 +47,7 @@ const Index = () => {
               LinkedIn
             </a>
           </div>
-          <MadeWithMohamedMarkhi />
+          {/* <MadeWithMohamedMarkhi /> */}
         </div>
       </footer>
     </div>
