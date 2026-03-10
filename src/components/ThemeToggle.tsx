@@ -32,7 +32,7 @@ const ThemeToggle = () => {
       <motion.div
         drag="y"
         dragConstraints={{ top: 0, bottom: 60 }}
-        dragElastic={0.1}
+        dragElastic={0}
         style={{ y }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -57,7 +57,7 @@ const ThemeToggle = () => {
                 exit={{ opacity: 0, x: 20 }}
                 className="absolute top-3 left-full whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-primary bg-background px-2 py-1 rounded border border-primary/20 shadow-sm"
               >
-                Pull
+                Pull to {theme === 'dark' ? 'Light' : 'Dark'} Mode
               </motion.div>
             )}
           </AnimatePresence>
