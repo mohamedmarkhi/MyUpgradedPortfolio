@@ -17,6 +17,9 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+const CONTACT_API_URL = `${API_BASE}/api/contact`;
+
 const Contact = () => {
   const {
     register,
@@ -29,7 +32,7 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
   try {
-    const response = await fetch("http://localhost:5000/api/contact", {
+    const response = await fetch(CONTACT_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
