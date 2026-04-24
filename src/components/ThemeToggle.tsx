@@ -1,63 +1,109 @@
-"use client";
+import React, { useEffect, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  AnimatePresence,
+  animate,
+} from "framer-motion";
+import { useTheme } from "next-themes";
+import { SunMedium, MoonStar } from "lucide-react";
 
-import React, { useState } from 'react';
-import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
-import { useTheme } from 'next-themes';
-import { Sun, Moon } from 'lucide-react';
+export default function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
 
-const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
-  const y = useMotionValue(0);
+  const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const springY = useSpring(y, { stiffness: 400, damping: 25 });
-  const cordHeight = useTransform(springY, [0, 60], [40, 100]);
+  const y = useMotionValue(0);
+  const cordHeight = useTransform(y, [0, 60], [36, 92]);
+  const glowOpacity = useTransform(y, [0, 60], [0.12, 0.3]);
+  const rotate = useTransform(y, [0, 60], [0, 6]);
+  const scale = useTransform(y, [0, 60], [1, 1.05]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = resolvedTheme === "dark";
+  const nextTheme = isDark ? "light" : "dark";
+
+  const resetPull = () => {
+    animate(y, 0, {
+      type: "spring",
+      stiffness: 300,
+      damping: 22,
+    });
+  };
 
   const handleDragEnd = () => {
-    if (y.get() > 40) {
-      setTheme(theme === 'dark' ? 'light' : 'dark');
+    setIsDragging(false);
+
+    if (y.get() > 40 && mounted) {
+      setTheme(nextTheme);
     }
-    y.set(0);
+
+    resetPull();
   };
 
   return (
-    <div className="fixed top-0 left-12 z-[60] flex flex-col items-center pointer-events-none">
-      {/* The Cord */}
-      <motion.div 
+    <div className="pointer-events-none fixed left-1/2 top-0 z-[60] flex -translate-x-1/2 flex-col items-center sm:left-6 sm:translate-x-0">
+      <motion.div
         style={{ height: cordHeight }}
-        className="w-1 bg-gradient-to-b from-primary to-accent rounded-full origin-top"
+        className="w-[3px] rounded-full bg-gradient-to-b from-primary via-primary/80 to-primary/30"
       />
-      
-      {/* The Toggle Handle */}
+
       <motion.div
         drag="y"
         dragConstraints={{ top: 0, bottom: 60 }}
-        dragElastic={0.1}
-        style={{ y }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        dragElastic={0.08}
+        dragMomentum={false}
+        style={{ y, rotate, scale }}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        onDragStart={() => setIsDragging(true)}
         onDragEnd={handleDragEnd}
-        className="pointer-events-auto cursor-grab active:cursor-grabbing group"
+        className="pointer-events-auto cursor-grab active:cursor-grabbing"
+        role="button"
+        tabIndex={0}
+        aria-label={`Pull to switch to ${nextTheme} mode`}
+        onKeyDown={(e) => {
+          if (!mounted) return;
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setTheme(nextTheme);
+          }
+        }}
       >
-        <div className="relative">
-          <div className="absolute -inset-4 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="w-12 h-12 bg-background border-2 border-primary rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-            {theme === 'dark' ? (
-              <Sun className="text-primary" size={24} />
+        <div className="relative flex flex-col items-center">
+          <motion.div
+            style={{ opacity: glowOpacity }}
+            className="absolute -inset-3 rounded-full bg-primary/20 blur-xl"
+          />
+
+          <div className="relative flex h-12 w-12 items-center justify-center rounded-full border border-primary/25 bg-background shadow-lg">
+            {mounted ? (
+              isDark ? (
+                <SunMedium className="h-5 w-5 text-primary" />
+              ) : (
+                <MoonStar className="h-5 w-5 text-primary" />
+              )
             ) : (
-              <Moon className="text-primary" size={24} />
+              <div className="h-5 w-5" />
             )}
           </div>
-          
+
           <AnimatePresence>
-            {isHovered && (
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 40 }}
-                exit={{ opacity: 0, x: 20 }}
-                className="absolute top-3 left-full whitespace-nowrap text-[10px] font-black uppercase tracking-widest text-primary bg-background px-2 py-1 rounded border border-primary/20 shadow-sm"
+            {(isHovered || isDragging) && (
+              <motion.div
+                initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                transition={{ duration: 0.18 }}
+                className="absolute top-14 whitespace-nowrap rounded-lg border border-primary/20 bg-background px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-primary shadow-md"
               >
-                Pull
+                Pull to {isDark ? "Light" : "Dark"}
               </motion.div>
             )}
           </AnimatePresence>
@@ -65,6 +111,4 @@ const ThemeToggle = () => {
       </motion.div>
     </div>
   );
-};
-
-export default ThemeToggle;
+}
