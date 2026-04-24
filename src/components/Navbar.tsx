@@ -1,102 +1,158 @@
-"use client";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Code2,
+  User,
+  Briefcase,
+  Mail,
+  FileDown,
+  PanelsTopLeft,
+  ChevronRight,
+} from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Code2, User, Briefcase, Mail, FileDown, Menu } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+const navItems = [
+  { name: "About", icon: User, href: "#about" },
+  { name: "Skills", icon: Code2, href: "#skills" },
+  { name: "Projects", icon: Briefcase, href: "#projects" },
+  { name: "Contact", icon: Mail, href: "#contact" },
+];
 
-const Navbar = () => {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { name: 'About', icon: <User size={18} />, href: '#about' },
-    { name: 'Skills', icon: <Code2 size={18} />, href: '#skills' },
-    { name: 'Projects', icon: <Briefcase size={18} />, href: '#projects' },
-    { name: 'Contact', icon: <Mail size={18} />, href: '#contact' },
-  ];
-
   return (
-    <motion.nav 
-      initial={{ y: -100, x: "-50%" }}
-      animate={{ y: 0, x: "-50%" }}
-      className="fixed top-4 md:top-6 left-1/2 z-50 w-[92%] max-w-4xl"
+    <motion.nav
+      initial={{ opacity: 0, y: -24, x: "-50%" }}
+      animate={{ opacity: 1, y: 0, x: "-50%" }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed left-1/2 top-3 z-50 w-[95%] max-w-6xl -translate-x-1/2 sm:top-4"
     >
-      <div className="bg-background/80 backdrop-blur-xl border border-primary/20 rounded-full px-4 py-2 flex items-center justify-between shadow-xl shadow-primary/5">
-        {/* Logo - Left Side */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-black text-sm">
+      <div className="flex items-center justify-between rounded-2xl border border-primary/15 bg-background/80 px-3 py-2.5 shadow-lg backdrop-blur-xl sm:px-4 md:px-5">
+        <a href="#" className="flex min-w-0 items-center gap-3">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
             M
           </div>
-          <span className="font-black text-foreground tracking-tighter hidden sm:inline">MARKHI</span>
-        </div>
 
-        {/* Desktop Navigation - Centered */}
-        <div className="hidden md:flex items-center gap-1 lg:gap-2 absolute left-1/2 -translate-x-1/2">
+          <div className="min-w-0">
+            <span className="truncate text-sm font-semibold tracking-tight text-foreground">
+              MARKHI
+            </span>
+          </div>
+        </a>
+
+        <nav className="hidden items-center gap-1 xl:flex">
           {navItems.map((item) => (
-            <a 
+            <a
               key={item.name}
               href={item.href}
-              className="text-[11px] lg:text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-primary px-3 py-2 rounded-full transition-all flex items-center gap-2 hover:bg-primary/5"
+              className="rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:bg-primary/5 hover:text-primary"
             >
               {item.name}
             </a>
           ))}
-        </div>
+        </nav>
 
-        {/* Actions - Right Side */}
         <div className="flex items-center gap-2">
-          <a 
-            href="/resume.pdf" 
+          <a
+            href="/resume.pdf"
             download
-            className="hidden sm:flex p-2.5 rounded-full bg-secondary text-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-sm"
             title="Download CV"
+            className="hidden sm:inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-primary-foreground"
           >
-            <FileDown size={18} />
+            <FileDown className="h-4 w-4" />
           </a>
-          
-          <a 
+
+          <a
             href="#contact"
-            className="hidden sm:block bg-primary text-primary-foreground px-5 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20"
+            className="hidden sm:inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
           >
             Hire Me
+            <ChevronRight className="h-4 w-4" />
           </a>
 
-          {/* Mobile Menu Toggle */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <button className="md:hidden p-2.5 bg-primary/10 border border-primary/20 rounded-full text-primary hover:bg-primary hover:text-primary-foreground transition-all">
-                <Menu size={20} />
+              <button
+                type="button"
+                aria-label="Open navigation menu"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground xl:hidden"
+              >
+                <PanelsTopLeft className="h-4.5 w-4.5" />
               </button>
             </SheetTrigger>
-            <SheetContent side="top" className="w-full h-auto rounded-b-[32px] border-primary/20 bg-background/95 backdrop-blur-xl pt-12 pb-8">
+
+            <SheetContent
+              side="top"
+              className="w-full rounded-b-3xl border-primary/15 bg-background/95 px-5 pt-10 pb-8 backdrop-blur-xl"
+            >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="flex flex-col gap-2 items-center">
-                {navItems.map((item) => (
-                  <a 
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-4 w-full py-4 rounded-2xl hover:bg-primary/10 text-foreground font-black uppercase tracking-widest text-sm transition-all"
-                  >
-                    <span className="text-primary">{item.icon}</span>
-                    {item.name}
-                  </a>
-                ))}
-                <div className="h-px w-full bg-border my-4" />
-                <div className="flex flex-col gap-3 w-full px-6">
-                  <a 
-                    href="/resume.pdf" 
+
+              <div className="mx-auto max-w-md">
+                <div className="mb-6 flex items-center gap-3 rounded-2xl border border-border bg-card/60 px-4 py-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
+                    M
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">
+                      MARKHI
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Full Stack Developer
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  {navItems.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="group flex w-full items-center justify-between rounded-2xl px-4 py-3.5 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-primary/10 hover:text-primary"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-200 group-hover:scale-105">
+                            <Icon className="h-4 w-4" />
+                          </div>
+                          <span>{item.name}</span>
+                        </div>
+
+                        <ChevronRight className="h-4 w-4 opacity-50 transition-transform duration-200 group-hover:translate-x-0.5" />
+                      </a>
+                    );
+                  })}
+                </div>
+
+                <div className="my-4 h-px w-full bg-border" />
+
+                <div className="flex flex-col gap-3">
+                  <a
+                    href="/resume.pdf"
                     download
-                    className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-secondary text-primary font-black uppercase tracking-widest text-xs"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center gap-2 rounded-2xl bg-secondary px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all duration-200 hover:bg-secondary/80"
                   >
-                    <FileDown size={18} /> Download CV
+                    <FileDown className="h-4 w-4" />
+                    Download CV
                   </a>
-                  <a 
+
+                  <a
                     href="#contact"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-primary text-primary-foreground font-black uppercase tracking-widest text-xs"
+                    className="flex items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary-foreground transition-all duration-200 hover:opacity-95"
                   >
                     Hire Me
+                    <ChevronRight className="h-4 w-4" />
                   </a>
                 </div>
               </div>
@@ -106,6 +162,4 @@ const Navbar = () => {
       </div>
     </motion.nav>
   );
-};
-
-export default Navbar;
+}
